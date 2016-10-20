@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TankView : MonoBehaviour {
 
-    public TankController tankController;
+    public TankMovementController tankMovementController;
     public AudioClip motorSound;
     public AudioSource audioSource;
 
@@ -17,12 +17,12 @@ public class TankView : MonoBehaviour {
 
     public void TankMove(bool is_forward)
     {
-        transform.Translate((is_forward ? Vector3.forward : Vector3.back) * tankController.GetTankMovementSpeed() * Time.deltaTime, Space.Self);
+        transform.Translate((is_forward ? Vector3.forward : Vector3.back) * tankMovementController.GetTankMovementSpeed() * Time.deltaTime, Space.Self);
     }
 
     public void TankRotate(bool is_clockwise)
     {
-        transform.Rotate((is_clockwise? Vector3.up : Vector3.down) * (tankController.GetTankRotationSpeed() * Time.deltaTime), Space.Self);
+        transform.Rotate((is_clockwise? Vector3.up : Vector3.down) * (tankMovementController.GetTankRotationSpeed() * Time.deltaTime), Space.Self);
     }
 
     public void StopMotorSound()

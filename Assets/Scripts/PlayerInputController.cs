@@ -6,10 +6,6 @@ public class PlayerInputController : MonoBehaviour {
 
     public TankManager tankManager;
 
-    void Start () {
-	    
-	}
-
 	void Update () {
         bool isAnyTurnKeyHold = true;
         bool isAnyMoveKeyHold = true;
@@ -40,5 +36,10 @@ public class PlayerInputController : MonoBehaviour {
             else if (Input.GetKeyUp(KeyCode.DownArrow))
                 tankManager.ProcessKeyUp(KeyCode.DownArrow);
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            tankManager.ProcessKeyDown(KeyCode.Q);
+        else if (Input.GetKeyDown(KeyCode.W))
+            tankManager.ProcessKeyDown(KeyCode.W);
     }
 }

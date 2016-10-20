@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d62e74445dfbac49ac0fb622fb1ccbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankController: {fileID: 34330943}
-  motorSound: {fileID: 8300000, guid: e2e90460fdbf85941850b50407df8a02, type: 3}
+  tankMovementController: {fileID: 34330943}
+  motorSound: {fileID: 8300000, guid: 76a98861cdfea6a4b808f723dfefe347, type: 3}
   audioSource: {fileID: 34330946}
 --- !u!54 &34330945
 Rigidbody:
@@ -380,6 +380,141 @@ Transform:
   - {fileID: 1532366145}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &257930946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 257930947}
+  - 114: {fileID: 257930949}
+  - 114: {fileID: 257930948}
+  - 82: {fileID: 257930950}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257930947
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257930946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.022, y: -0.402, z: 1.041}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1005770511}
+  m_RootOrder: 2
+--- !u!114 &257930948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257930946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2bb5d981e804a46bc1168e32455815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponPrefabs:
+  - {fileID: 105340, guid: 356cc3e37d75f4d4585f89c908802079, type: 2}
+  - {fileID: 105510, guid: 31ab1c5f34c47e44181863a224f4fa63, type: 2}
+  - {fileID: 133554, guid: 95d0b232449ec3b4bb1b81947e7913ef, type: 2}
+  pointHidden: {fileID: 1507032072}
+  weaponSwitchSound: {fileID: 8300000, guid: 41592c0b72f1bdc418b5f5567c4b7f38, type: 3}
+  aSource: {fileID: 257930950}
+--- !u!114 &257930949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257930946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeeca9f4af73bcf498081beb35b6ac73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponView: {fileID: 257930948}
+--- !u!82 &257930950
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257930946}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &573927938
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +636,7 @@ Transform:
   m_Children:
   - {fileID: 848796034}
   - {fileID: 1182909896}
+  - {fileID: 257930947}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!1 &1039040309
@@ -801,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29c1e060cdc67d49a73de5c09888c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tankManager: {fileID: 1262204209}
   tankMovementSpeed: 10
   tankRotationSpeed: 200
 --- !u!4 &1262204208
@@ -827,8 +964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d419b46fdb7fbb8469fc97a535b05101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 1262204207}
-  tankController: {fileID: 34330943}
+  tankData: {fileID: 1262204207}
+  tankMovementController: {fileID: 34330943}
+  weaponController: {fileID: 257930949}
   cameraController: {fileID: 1792358413}
 --- !u!114 &1262204210
 MonoBehaviour:
@@ -975,6 +1113,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1401283000}
   m_Mesh: {fileID: 4300002, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
+--- !u!1 &1507032071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1507032072}
+  m_Layer: 0
+  m_Name: Hidden Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1507032072
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1507032071}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &1532366144
 GameObject:
   m_ObjectHideFlags: 0

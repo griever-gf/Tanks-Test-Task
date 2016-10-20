@@ -3,18 +3,11 @@ using System.Collections;
 
 public class TankManager : MonoBehaviour {
 
-    public GameData gameData;
-    public TankController tankController;
-    //public TankWeaponController tankWaeponController;
+    public TankData tankData;
+    public TankMovementController tankMovementController;
+    public WeaponController weaponController;
     public CameraController cameraController;
 
-    void Start () {
-	
-	}
-	
-	void Update () {
-	
-	}
 
     public void ProcessKeyHold(KeyCode key_code)
     {
@@ -24,12 +17,8 @@ public class TankManager : MonoBehaviour {
             case KeyCode.RightArrow:
             case KeyCode.UpArrow:
             case KeyCode.DownArrow:
-                tankController.ProcessKeyHold(key_code);
-                cameraController.UpdateCameraPosition(tankController.GetTankPosition());
-                break;
-            case KeyCode.X:
-            case KeyCode.Q:
-            case KeyCode.W:
+                tankMovementController.ProcessKeyHold(key_code);
+                cameraController.UpdateCameraPosition(tankMovementController.GetTankPosition());
                 break;
         }
     }
@@ -42,23 +31,42 @@ public class TankManager : MonoBehaviour {
             case KeyCode.RightArrow:
             case KeyCode.UpArrow:
             case KeyCode.DownArrow:
-                tankController.ProcessKeyUp(key_code);
-                cameraController.UpdateCameraPosition(tankController.GetTankPosition());
+                tankMovementController.ProcessKeyUp(key_code);
+                cameraController.UpdateCameraPosition(tankMovementController.GetTankPosition());
                 break;
-            case KeyCode.X:
+        }
+    }
+
+    public void ProcessKeyDown(KeyCode key_code)
+    {
+        switch (key_code)
+        {
             case KeyCode.Q:
+                SwitchTankWeapon(false);
+                break;
             case KeyCode.W:
+                SwitchTankWeapon(true);
                 break;
         }
     }
 
     public float GetTankMovementSpeed()
     {
-        return gameData.GetTankMovementSpeed();
+        return tankData.GetTankMovementSpeed();
     }
 
     public float GetTankRotationSpeed()
     {
-        return gameData.GetTankRotationSpeed();
+        return tankData.GetTankRotationSpeed();
+    }
+
+    public void SwitchTankWeapon(bool is_forward)
+    {
+        tankData.SwitchCurrentWeapon(is_forward);
+    }
+
+    public void UpdateTankWeapon(int idx, bool play_sound)
+    {
+        weaponController.UpdateCurrentWeapon(idx, play_sound);
     }
 }

@@ -1,21 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TankController : MonoBehaviour
+public class TankMovementController : MonoBehaviour
 {
     public float rotationSpeed = 100;
     public float movementSpeed = 10;
 
     public TankManager tankManager;
     public TankView tankView;
-
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-    }
 
     public void ProcessKeyHold(KeyCode key_code)
     {
