@@ -358,7 +358,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 206596849}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - 33: {fileID: 573927942}
   - 65: {fileID: 573927941}
   - 23: {fileID: 573927940}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +658,7 @@ GameObject:
   - 33: {fileID: 1039040312}
   - 64: {fileID: 1039040311}
   - 23: {fileID: 1039040310}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +734,7 @@ GameObject:
   - 33: {fileID: 1169230119}
   - 65: {fileID: 1169230118}
   - 23: {fileID: 1169230117}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -851,7 +851,7 @@ GameObject:
   - 33: {fileID: 1253702803}
   - 65: {fileID: 1253702802}
   - 23: {fileID: 1253702801}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1129,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1532366145}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   - 33: {fileID: 1716446738}
   - 65: {fileID: 1716446737}
   - 23: {fileID: 1716446736}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1329,6 +1329,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameField: {fileID: 1039040309}
+--- !u!1001 &1849857749
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -25.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11472854, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1005770511}
+    - target: {fileID: 450656, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1948923168 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 151848, guid: 9d407ef68480856428c7b14a35d84f94, type: 2}
+  m_PrefabInternal: {fileID: 1849857749}
+--- !u!54 &1948923169
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1948923168}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1983431319
 GameObject:
   m_ObjectHideFlags: 0
