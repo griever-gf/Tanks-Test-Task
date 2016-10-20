@@ -95,8 +95,8 @@ GameObject:
   - 4: {fileID: 1005770511}
   - 114: {fileID: 34330944}
   - 114: {fileID: 34330943}
-  - 54: {fileID: 34330945}
   - 82: {fileID: 34330946}
+  - 54: {fileID: 34330945}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -426,7 +426,6 @@ MonoBehaviour:
   - {fileID: 105340, guid: 356cc3e37d75f4d4585f89c908802079, type: 2}
   - {fileID: 105510, guid: 31ab1c5f34c47e44181863a224f4fa63, type: 2}
   - {fileID: 133554, guid: 95d0b232449ec3b4bb1b81947e7913ef, type: 2}
-  pointHidden: {fileID: 1507032072}
   weaponSwitchSound: {fileID: 8300000, guid: 41592c0b72f1bdc418b5f5567c4b7f38, type: 3}
   aSource: {fileID: 257930950}
 --- !u!114 &257930949
@@ -1113,34 +1112,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1401283000}
   m_Mesh: {fileID: 4300002, guid: 002e2a607f5b64c48be0b3b0d8b8bfdd, type: 3}
---- !u!1 &1507032071
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1507032072}
-  m_Layer: 0
-  m_Name: Hidden Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1507032072
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1507032071}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
 --- !u!1 &1532366144
 GameObject:
   m_ObjectHideFlags: 0

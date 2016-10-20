@@ -5,7 +5,6 @@ public class WeaponView : MonoBehaviour {
 
     public GameObject[] weaponPrefabs;
     GameObject[] weapons;
-    public Transform pointHidden;
     public AudioClip weaponSwitchSound;
     public AudioSource aSource;
 
@@ -14,7 +13,13 @@ public class WeaponView : MonoBehaviour {
 	void Start () {
         weapons = new GameObject[weaponPrefabs.Length];
         for (int i = 0; i < weaponPrefabs.Length; i++)
-            weapons[i] = Instantiate(weaponPrefabs[i], pointHidden.position, Quaternion.identity) as GameObject;
+        {
+            weapons[i] = Instantiate(weaponPrefabs[i]);
+            weapons[i].SetActive(false);
+            weapons[i].transform.SetParent(gameObject.transform);
+            weapons[i].transform.localPosition = weaponPrefabs[i].transform.localPosition;
+            weapons[i].transform.localRotation = weaponPrefabs[i].transform.localRotation;
+        }
 	}
 
 
@@ -22,12 +27,9 @@ public class WeaponView : MonoBehaviour {
     {
         if ((new_weapon_idx >=0)&&(new_weapon_idx<weaponPrefabs.Length))
         {
-            weapons[currentWeaponIndex].transform.parent = null;
-            weapons[currentWeaponIndex].transform.position = pointHidden.position;
+            weapons[currentWeaponIndex].SetActive(false);
             currentWeaponIndex = new_weapon_idx;
-            weapons[currentWeaponIndex].transform.SetParent(gameObject.transform);
-            weapons[currentWeaponIndex].transform.localPosition = weaponPrefabs[currentWeaponIndex].transform.localPosition;
-            weapons[currentWeaponIndex].transform.localRotation = weaponPrefabs[currentWeaponIndex].transform.localRotation;
+            weapons[currentWeaponIndex].SetActive(true);
             if (play_sound)
             {
                 aSource.Stop();
