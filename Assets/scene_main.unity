@@ -97,7 +97,7 @@ GameObject:
   - 114: {fileID: 34330943}
   - 82: {fileID: 34330946}
   - 54: {fileID: 34330945}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 34330942}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -232,7 +232,7 @@ GameObject:
   - 4: {fileID: 134423884}
   - 33: {fileID: 134423886}
   - 23: {fileID: 134423885}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankTracksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   - 114: {fileID: 257930949}
   - 114: {fileID: 257930948}
   - 82: {fileID: 257930950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 257930946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.022, y: -0.402, z: 1.041}
+  m_LocalPosition: {x: 0, y: 1.55, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -425,9 +425,18 @@ MonoBehaviour:
   weaponPrefabs:
   - {fileID: 105340, guid: 356cc3e37d75f4d4585f89c908802079, type: 2}
   - {fileID: 105510, guid: 31ab1c5f34c47e44181863a224f4fa63, type: 2}
-  - {fileID: 133554, guid: 95d0b232449ec3b4bb1b81947e7913ef, type: 2}
+  - {fileID: 192164, guid: b9e35fa3d90114d49b2fae98066b328f, type: 2}
   weaponSwitchSound: {fileID: 8300000, guid: 41592c0b72f1bdc418b5f5567c4b7f38, type: 3}
+  bulletSounds:
+  - {fileID: 8300000, guid: 08f12f4df71d7e64ebeca31017eb3762, type: 3}
+  - {fileID: 8300000, guid: 1bff97ebf896aff479de2869dde3764e, type: 3}
+  - {fileID: 8300000, guid: c5de55152d685c44e9d49e8aef65fd44, type: 3}
   aSource: {fileID: 257930950}
+  bulletPrefabs:
+  - {fileID: 193808, guid: a1cbf0946e187544e8bef3aa170d9790, type: 2}
+  - {fileID: 193808, guid: ce746ac478c109541a5dd70c8088cd65, type: 2}
+  - {fileID: 193808, guid: 88b69da94a566d14297f343b597c4eb5, type: 2}
+  maxBulletCount: 100
 --- !u!114 &257930949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +607,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 848796034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankRenderers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +808,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1182909896}
   - 65: {fileID: 1182909897}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +998,7 @@ GameObject:
   - 4: {fileID: 1323514309}
   - 33: {fileID: 1323514311}
   - 23: {fileID: 1323514310}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1056,7 +1065,7 @@ GameObject:
   - 4: {fileID: 1401283001}
   - 33: {fileID: 1401283003}
   - 23: {fileID: 1401283002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1339,7 @@ GameObject:
   - 4: {fileID: 1983431320}
   - 33: {fileID: 1983431322}
   - 23: {fileID: 1983431321}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TankTracksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

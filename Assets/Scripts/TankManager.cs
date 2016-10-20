@@ -34,6 +34,9 @@ public class TankManager : MonoBehaviour {
                 tankMovementController.ProcessKeyUp(key_code);
                 cameraController.UpdateCameraPosition(tankMovementController.GetTankPosition());
                 break;
+            case KeyCode.X:
+                weaponController.StopShooting();
+                break;
         }
     }
 
@@ -42,10 +45,13 @@ public class TankManager : MonoBehaviour {
         switch (key_code)
         {
             case KeyCode.Q:
-                SwitchTankWeapon(false);
+                tankData.SwitchCurrentWeapon(false);
                 break;
             case KeyCode.W:
-                SwitchTankWeapon(true);
+                tankData.SwitchCurrentWeapon(true);
+                break;
+            case KeyCode.X:
+                weaponController.StartShooting();
                 break;
         }
     }
@@ -58,11 +64,6 @@ public class TankManager : MonoBehaviour {
     public float GetTankRotationSpeed()
     {
         return tankData.GetTankRotationSpeed();
-    }
-
-    public void SwitchTankWeapon(bool is_forward)
-    {
-        tankData.SwitchCurrentWeapon(is_forward);
     }
 
     public void UpdateTankWeapon(int idx, bool play_sound)

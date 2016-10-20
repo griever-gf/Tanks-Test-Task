@@ -9,4 +9,20 @@ public class WeaponController : MonoBehaviour {
     {
         weaponView.UpdateWeapon(idx, play_sound);
     }
+
+    public void StartShooting()
+    {
+        InvokeRepeating("Fire", 0, 0.05f);
+    }
+
+    public void StopShooting()
+    {
+        CancelInvoke();
+        weaponView.StopFire();
+    }
+
+    void Fire()
+    {
+        weaponView.FireBullet();
+    }
 }

@@ -41,5 +41,10 @@ public class PlayerInputController : MonoBehaviour {
             tankManager.ProcessKeyDown(KeyCode.Q);
         else if (Input.GetKeyDown(KeyCode.W))
             tankManager.ProcessKeyDown(KeyCode.W);
+        else if (Input.GetKeyDown(KeyCode.X))
+            tankManager.ProcessKeyDown(KeyCode.X);
+
+        if (Input.GetKeyUp(KeyCode.X))
+            tankManager.ProcessKeyUp(KeyCode.X);
     }
 }
