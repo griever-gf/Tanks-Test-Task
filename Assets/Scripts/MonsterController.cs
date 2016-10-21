@@ -72,7 +72,8 @@ public class MonsterController : MonoBehaviour {
         if (health > 0)
         {
             health = CalculateDamage(health, attacker_damage, defense);
-            Debug.Log("Applying Damage To Monster,  " + health + " remains");
+            //Debug.Log("Applying Damage To Monster,  " + health + " remains");
+            GUIView._instance.UpdateMonsterHealth(health);
             if (health <= 0)
             {
                 MonsterSound._instance.PlayDeathByBullet();

@@ -38,6 +38,7 @@ public class TankData : MonoBehaviour {
         tankParameters = new TankParameters();
         SetCurrentWeapon(0);
         MonsterController.OnMonsterTouchTankAction += DescreaseTankHealth;
+        GUIView._instance.UpdateTankHealth(tankParameters.health);
     }
 
     public float GetTankMovementSpeed()
@@ -53,7 +54,8 @@ public class TankData : MonoBehaviour {
     public void DescreaseTankHealth(int monster_damage)
     {
         tankParameters.health = MonsterController.CalculateDamage(tankParameters.health, monster_damage, tankParameters.defense);
-        Debug.Log("Tank Damaged: " + tankParameters.health + " health remains");
+        //Debug.Log("Tank Damaged: " + tankParameters.health + " health remains");
+        GUIView._instance.UpdateTankHealth(tankParameters.health);
     }
 
     public void SetCurrentWeapon(int idx)
