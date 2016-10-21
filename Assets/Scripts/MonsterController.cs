@@ -3,15 +3,20 @@ using System.Collections;
 
 public class MonsterController : MonoBehaviour {
 
-    public Transform target;
+    Transform target;
     float rotationSpeed = 1;
-    float movementSpeed = 8;
+    int movementSpeed;
+    int health;
+    int defense;
+    int damage;
 
-    public void SetTaregt (GameObject target)
-    {
-        this.target = target.transform;
-    }
+    public delegate void MonsterDeathAction();
+    public static event MonsterDeathAction OnMonsterDeath;
 
+    public delegate void MonsterTouchTankAction(int dmg);
+    public static event MonsterTouchTankAction OnMonsterTouchTankAction;
+
+    bool isTankTouched = false;
 
     void Update()
     {
@@ -27,9 +32,52 @@ public class MonsterController : MonoBehaviour {
 
     }
 
+    public static int CalculateDamage(int curr_health, int attacker_damage, int defense)
+    {
+        return (curr_health - (int)(Random.Range(0f, 1f) * attacker_damage / defense));
+    }
+
+    public void SetStartParams(GameObject target, MonstersData.MonsterParameters m_params)
+    {
+        this.target = target.transform;
+        movementSpeed = m_params.speed;
+        health = m_params.health;
+        defense = m_params.defense;
+        damage = m_params.damage;
+    }
+
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.layer == LayerMask.NameToLayer("tank"))
-            Destroy(gameObject);
+        if ((!isTankTouched)&&(col.gameObject.layer == LayerMask.NameToLayer("tank")))
+        {
+            isTankTouched = true;
+            MonsterSound._instance.PlayDeathByTank();
+            OnMonsterTouchTankAction(damage);
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        Debug.Log("Monster Death");
+        OnMonsterDeath();
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        gameObject.SetActive(false);
+    }
+
+    public void ApplyDamage(int attacker_damage)
+    {
+        if (health > 0)
+        {
+            health = CalculateDamage(health, attacker_damage, defense);
+            Debug.Log("Applying Damage To Monster,  " + health + " remains");
+            if (health <= 0)
+            {
+                MonsterSound._instance.PlayDeathByBullet();
+                Death();
+            }
+        }
     }
 }

@@ -66,8 +66,8 @@ public class TankManager : MonoBehaviour {
         return tankData.GetTankRotationSpeed();
     }
 
-    public void UpdateTankWeapon(int idx, bool play_sound)
+    public void UpdateTankWeapon(int idx, bool play_sound, TankData.WeaponParameters weapon_params)
     {
-        weaponController.UpdateCurrentWeapon(idx, play_sound);
+        weaponController.UpdateCurrentWeapon(idx, play_sound, weapon_params);
     }
 }

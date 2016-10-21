@@ -4,7 +4,6 @@ using System.Collections;
 public class TankMovementController : MonoBehaviour
 {
     public float rotationSpeed = 100;
-    public float movementSpeed = 10;
 
     public TankManager tankManager;
     public TankView tankView;

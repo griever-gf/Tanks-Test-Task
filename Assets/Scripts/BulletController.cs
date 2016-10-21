@@ -4,11 +4,17 @@ using System.Collections;
 public class BulletController : MonoBehaviour {
 
     float lifeTime = 1f;
+    int bulletDamage;
 
 
 	void Start () {
         Invoke("DestroyBullet", lifeTime);
 	}
+
+    public void SetBulletDamage(int dmg)
+    {
+        bulletDamage = dmg;
+    }
 	
 	void DestroyBullet()
     {
@@ -18,9 +24,11 @@ public class BulletController : MonoBehaviour {
         gameObject.SetActive(false);
     }
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision col)
     {
         CancelInvoke();
         DestroyBullet();
+        if (col.gameObject.layer == LayerMask.NameToLayer("monsters"))
+            col.gameObject.GetComponent<MonsterController>().ApplyDamage(bulletDamage);
     }
 }

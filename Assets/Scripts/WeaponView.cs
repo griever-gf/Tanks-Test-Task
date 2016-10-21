@@ -53,10 +53,11 @@ public class WeaponView : MonoBehaviour {
         }
     }
 
-    public void FireBullet()
+    public void FireBullet(int damage)
     {
         GameObject bullet = bulletPools[currentWeaponIndex].GetPoolObject();
         if (bullet == null) return;
+        bullet.GetComponent<BulletController>().SetBulletDamage(damage);
         bullet.transform.position = currentBulletPosition.position;
         bullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * bulletMoveSpeed);
 

@@ -12,16 +12,16 @@ public class TankData : MonoBehaviour {
     {
         public float tankMovementSpeed = 10;
         public float tankRotationSpeed = 200;
-        public int health;
-        public int defense;
+        public int health = 300;
+        public int defense = 4;
     }
 
     TankParameters tankParameters;
 
     public struct WeaponParameters
     {
-        int power;
-        int speed;
+        public int power;
+        public int speed;
 
         public WeaponParameters(int power, int speed)
         {
@@ -30,13 +30,14 @@ public class TankData : MonoBehaviour {
         }
     }
 
-    WeaponParameters[] weapons = new WeaponParameters[] {new WeaponParameters(20,5), new WeaponParameters(10,10), new WeaponParameters(5,20) };
+    WeaponParameters[] weapons = new WeaponParameters[] {new WeaponParameters(600,5), new WeaponParameters(400,10), new WeaponParameters(200,30) };
     int currentWeaponIndex;
 
     void Start()
     {
         tankParameters = new TankParameters();
         SetCurrentWeapon(0);
+        MonsterController.OnMonsterTouchTankAction += DescreaseTankHealth;
     }
 
     public float GetTankMovementSpeed()
@@ -49,10 +50,16 @@ public class TankData : MonoBehaviour {
         return tankParameters.tankRotationSpeed;
     }
 
+    public void DescreaseTankHealth(int monster_damage)
+    {
+        tankParameters.health = MonsterController.CalculateDamage(tankParameters.health, monster_damage, tankParameters.defense);
+        Debug.Log("Tank Damaged: " + tankParameters.health + " health remains");
+    }
+
     public void SetCurrentWeapon(int idx)
     {
         currentWeaponIndex = idx;
-        tankManager.UpdateTankWeapon(currentWeaponIndex, false);
+        tankManager.UpdateTankWeapon(currentWeaponIndex, false, weapons[currentWeaponIndex]);
     }
 
     public void SwitchCurrentWeapon(bool is_forward)
@@ -64,6 +71,6 @@ public class TankData : MonoBehaviour {
             currentWeaponIndex--;
             if (currentWeaponIndex == -1) currentWeaponIndex = weapons.Length - 1;
         }
-        tankManager.UpdateTankWeapon(currentWeaponIndex, true);
+        tankManager.UpdateTankWeapon(currentWeaponIndex, true, weapons[currentWeaponIndex]);
     }
 }
