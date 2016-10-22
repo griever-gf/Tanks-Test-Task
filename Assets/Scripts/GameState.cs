@@ -3,9 +3,25 @@ using System.Collections;
 
 public class GameState : MonoBehaviour {
 
+
+    public static GameState _instance { get; private set; } //singleton
+
+    public void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     public enum GameCycleState { gameplay, gameOver };
     GameCycleState state;
     int deathCounter = 0;
+
+    void Start()
+    {
+        GUIView._instance.UpdateDeathCounter(deathCounter);
+    }
 
     public bool isGameOver()
     {
@@ -20,5 +36,6 @@ public class GameState : MonoBehaviour {
     public void IncreaseDeathCounter()
     {
         deathCounter++;
+        GUIView._instance.UpdateDeathCounter(deathCounter);
     }
 }

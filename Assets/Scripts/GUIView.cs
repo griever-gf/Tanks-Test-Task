@@ -27,4 +27,9 @@ public class GUIView : MonoBehaviour {
     {
         lMonsterHealth.text = "Monster Health " + value.ToString();
     }
+
+    public void UpdateDeathCounter(int value)
+    {
+        lDeathCount.text = "Death Count " + value.ToString();
+    }
 }

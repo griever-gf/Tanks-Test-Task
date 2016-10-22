@@ -1784,7 +1784,7 @@ GameObject:
   - 114: {fileID: 1735882951}
   - 114: {fileID: 1735882953}
   m_Layer: 0
-  m_Name: Game State
+  m_Name: Game Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

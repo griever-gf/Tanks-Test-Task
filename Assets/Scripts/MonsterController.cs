@@ -59,12 +59,13 @@ public class MonsterController : MonoBehaviour {
 
     void Death()
     {
-        Debug.Log("Monster Death");
+        //Debug.Log("Monster Death");
         OnMonsterDeath();
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
+        GameState._instance.IncreaseDeathCounter();
     }
 
     public void ApplyDamage(int attacker_damage)
@@ -73,7 +74,7 @@ public class MonsterController : MonoBehaviour {
         {
             health = CalculateDamage(health, attacker_damage, defense);
             //Debug.Log("Applying Damage To Monster,  " + health + " remains");
-            GUIView._instance.UpdateMonsterHealth(health);
+            GUIView._instance.UpdateMonsterHealth((health > 0) ? health : 0);
             if (health <= 0)
             {
                 MonsterSound._instance.PlayDeathByBullet();

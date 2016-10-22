@@ -55,7 +55,7 @@ public class TankData : MonoBehaviour {
     {
         tankParameters.health = MonsterController.CalculateDamage(tankParameters.health, monster_damage, tankParameters.defense);
         //Debug.Log("Tank Damaged: " + tankParameters.health + " health remains");
-        GUIView._instance.UpdateTankHealth(tankParameters.health);
+        GUIView._instance.UpdateTankHealth((tankParameters.health > 0) ? tankParameters.health : 0);
     }
 
     public void SetCurrentWeapon(int idx)
