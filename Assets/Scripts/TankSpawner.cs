@@ -16,4 +16,9 @@ public class TankSpawner : MonoBehaviour {
         tankManager.SetTankMovementAndWeaponControllers(tank.GetComponent<TankMovementController>(), tank.GetComponentInChildren<WeaponController>());
         monsterView.SetMonsterTarget(tank);
     }
+
+    public void DestroyTank()
+    {
+        Destroy(tank);
+    }
 }

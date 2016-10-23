@@ -19,9 +19,9 @@ public class MonstersData : MonoBehaviour {
         }
     }
 
-    MonsterParameters[] monsterParams = new MonsterParameters[] { new MonsterParameters(200, 5, 100, 7),
-                                                                  new MonsterParameters(500, 7, 75, 4),
-                                                                  new MonsterParameters(700, 8, 50, 2),
+    MonsterParameters[] monsterParams = new MonsterParameters[] { new MonsterParameters(200, 5, 500, 7),
+                                                                  new MonsterParameters(500, 7, 400, 4),
+                                                                  new MonsterParameters(700, 8, 300, 2),
                                                                 };
 
     public MonsterParameters GetMonsterParameters(int idx)

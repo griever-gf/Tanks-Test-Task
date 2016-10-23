@@ -65,7 +65,7 @@ public class MonsterController : MonoBehaviour {
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
-        GameState._instance.IncreaseDeathCounter();
+        GameController._instance.IncreaseDeathCounter();
     }
 
     public void ApplyDamage(int attacker_damage)

@@ -16,7 +16,7 @@ public class MonstersManager : MonoBehaviour {
 
     void Update()
     {
-        if ((currentMonsterCount < maxMonsterCount) && (!GameState._instance.isGameOver()))
+        if ((currentMonsterCount < maxMonsterCount) && (!GameController._instance.isGameOver()))
         {
             currentMonsterCount++;
             monstersView.SpawnMonster();
@@ -38,5 +38,11 @@ public class MonstersManager : MonoBehaviour {
     public int GetMaxMonsterCount()
     {
         return maxMonsterCount;
+    }
+
+    public void DestroyMonsters()
+    {
+        monstersView.DestroyAllMonsters();
+        currentMonsterCount = 0;
     }
 }

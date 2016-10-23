@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
     public GameObject gameField;
-
+    public GameObject tankSpawnPoint;
     Vector3 maxCameraPoint, minCameraPoint;
 
     Vector3 ConvertToCameraPosition(Vector3 pos)
@@ -31,5 +31,10 @@ public class CameraController : MonoBehaviour {
         if (pos.z > maxCameraPoint.z) pos.z = maxCameraPoint.z;
         else if (pos.z < minCameraPoint.z) pos.z = minCameraPoint.z;
         transform.position = pos;
+    }
+
+    public void ResetCameraPosition()
+    {
+        transform.position = ConvertToCameraPosition(tankSpawnPoint.transform.position);
     }
 }

@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameState : MonoBehaviour {
+public class GameController : MonoBehaviour {
 
-
-    public static GameState _instance { get; private set; } //singleton
+    public static GameController _instance { get; private set; } //singleton
 
     public void Awake()
     {
@@ -17,6 +16,10 @@ public class GameState : MonoBehaviour {
     public enum GameCycleState { gameplay, gameOver };
     GameCycleState state;
     int deathCounter = 0;
+
+    public TankManager tankManager;
+    public MonstersManager monstersManager;
+    public CameraController cameraController;
 
     void Start()
     {
@@ -37,5 +40,20 @@ public class GameState : MonoBehaviour {
     {
         deathCounter++;
         GUIView._instance.UpdateDeathCounter(deathCounter);
+    }
+
+    public void ProcessGameOver()
+    {
+        SetGameCycleState(GameController.GameCycleState.gameOver);
+        tankManager.DestroyTank();
+        monstersManager.DestroyMonsters();
+        GUIView._instance.SpawnRestartPopup();
+    }
+
+    public void RestartGame()
+    {
+        SetGameCycleState(GameController.GameCycleState.gameplay);
+        tankManager.SpawnTank();
+        cameraController.ResetCameraPosition();
     }
 }

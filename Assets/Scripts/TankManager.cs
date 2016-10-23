@@ -8,7 +8,7 @@ public class TankManager : MonoBehaviour {
     public TankSpawner tankSpawner;
     TankMovementController tankMovementController;
     WeaponController weaponController;
-    
+    public MonstersManager monstersManager;
 
     public void ProcessKeyHold(KeyCode key_code)
     {
@@ -77,7 +77,7 @@ public class TankManager : MonoBehaviour {
         SpawnTank();
     }
 
-    void SpawnTank()
+    public void SpawnTank()
     {
         tankSpawner.SpawnTank();
         tankData.ProcessTankStart();
@@ -87,5 +87,15 @@ public class TankManager : MonoBehaviour {
     {
         tankMovementController = tmc;
         weaponController = twc;
+    }
+
+    public void DestroyTank()
+    {
+        tankSpawner.DestroyTank();
+    }
+
+    public void ProcessGameOver()
+    {
+        GameController._instance.ProcessGameOver();
     }
 }

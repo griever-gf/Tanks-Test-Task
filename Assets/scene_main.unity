@@ -1042,6 +1042,7 @@ MonoBehaviour:
   cameraController: {fileID: 1792358413}
   tankData: {fileID: 1262204207}
   tankSpawner: {fileID: 1262204214}
+  monstersManager: {fileID: 1262204211}
 --- !u!114 &1262204210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,6 +1253,8 @@ MonoBehaviour:
   lTankHealth: {fileID: 762338657}
   lMonsterHealth: {fileID: 482572945}
   lDeathCount: {fileID: 946706434}
+  pPopupRestart: {fileID: 123166, guid: 9d6660f91eaea424194ff4508ed4fa83, type: 2}
+  canvas: {fileID: 1101964649}
 --- !u!4 &1735882952
 Transform:
   m_ObjectHideFlags: 0
@@ -1276,6 +1279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607af2309e41dcd469fb5d830a2da2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tankManager: {fileID: 1262204209}
+  monstersManager: {fileID: 1262204211}
+  cameraController: {fileID: 1792358413}
 --- !u!1 &1792358407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameField: {fileID: 1039040309}
+  tankSpawnPoint: {fileID: 1909424058}
 --- !u!1 &1909424058
 GameObject:
   m_ObjectHideFlags: 0

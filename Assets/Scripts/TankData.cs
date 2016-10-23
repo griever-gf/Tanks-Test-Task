@@ -10,8 +10,6 @@ public class TankData : MonoBehaviour {
 
     public class TankParameters
     {
-        public float tankMovementSpeed = 10;
-        public float tankRotationSpeed = 200;
         public int health = 300;
         public int defense = 4;
     }
@@ -33,13 +31,9 @@ public class TankData : MonoBehaviour {
     WeaponParameters[] weapons = new WeaponParameters[] {new WeaponParameters(600,5), new WeaponParameters(400,10), new WeaponParameters(200,30) };
     int currentWeaponIndex;
 
-    void Awake()
-    {
-        tankParameters = new TankParameters();
-    }
-
     public void ProcessTankStart()
     {
+        tankParameters = new TankParameters();
         SetCurrentWeapon(0);
         MonsterController.OnMonsterTouchTankAction += DescreaseTankHealth;
         GUIView._instance.UpdateTankHealth(tankParameters.health);
@@ -47,19 +41,29 @@ public class TankData : MonoBehaviour {
 
     public float GetTankMovementSpeed()
     {
-        return tankParameters.tankMovementSpeed;
+        return tankMovementSpeed;
     }
 
     public float GetTankRotationSpeed()
     {
-        return tankParameters.tankRotationSpeed;
+        return tankRotationSpeed;
     }
 
     public void DescreaseTankHealth(int monster_damage)
     {
         tankParameters.health = MonsterController.CalculateDamage(tankParameters.health, monster_damage, tankParameters.defense);
         //Debug.Log("Tank Damaged: " + tankParameters.health + " health remains");
-        GUIView._instance.UpdateTankHealth((tankParameters.health > 0) ? tankParameters.health : 0);
+
+        if (tankParameters.health > 0)
+        {
+            GUIView._instance.UpdateTankHealth(tankParameters.health);
+        }
+        else
+        {
+            GUIView._instance.UpdateTankHealth(0);
+            tankManager.ProcessGameOver();
+        }
+        
     }
 
     public void SetCurrentWeapon(int idx)

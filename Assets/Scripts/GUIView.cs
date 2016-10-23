@@ -17,6 +17,9 @@ public class GUIView : MonoBehaviour {
     public Text lTankHealth;
     public Text lMonsterHealth;
     public Text lDeathCount;
+    public GameObject pPopupRestart;
+    GameObject popupRestart;
+    public Canvas canvas;
 
     public void UpdateTankHealth(int value)
     {
@@ -31,5 +34,18 @@ public class GUIView : MonoBehaviour {
     public void UpdateDeathCounter(int value)
     {
         lDeathCount.text = "Death Count " + value.ToString();
+    }
+
+    public void SpawnRestartPopup()
+    {
+        popupRestart = Instantiate(pPopupRestart);
+        popupRestart.transform.SetParent(canvas.transform, false);
+        popupRestart.GetComponentInChildren<Button>().onClick.AddListener(RestartButtonPressed);
+    }
+
+    void RestartButtonPressed()
+    {
+        Destroy(popupRestart);
+        GameController._instance.RestartGame();
     }
 }
