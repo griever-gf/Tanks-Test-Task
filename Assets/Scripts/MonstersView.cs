@@ -5,28 +5,23 @@ public class MonstersView : MonoBehaviour {
 
     public GameObject[] monsterPrefabs;
     GameObjectPool[] monsterPools;
-    public int maxMonsterCount = 10;
-    int currentMonsterCount;
+    
     public GameObject gameField;
     Vector3 maxSpawnPoint, minSpawnPoint;
     public float monsterDiameter = 1.5f;
     public float monsterSpawnHeight = 0.5f;
-    public GameObject monsterTarget;
+    GameObject monsterTarget;
     public MonstersManager monstersManager;
-
-
 
     void Start ()
     {
-        currentMonsterCount = 0;
-        MonsterController.OnMonsterDeath += DescreaseMonsterCounter;
 
         //filling moster pools
         monsterPools = new GameObjectPool[monsterPrefabs.Length];
         for (int i = 0; i < monsterPrefabs.Length; i++)
         {
             monsterPools[i] = gameObject.AddComponent<GameObjectPool>();
-            monsterPools[i].Fill(maxMonsterCount, monsterPrefabs[i]);
+            monsterPools[i].Fill(monstersManager.GetMaxMonsterCount(), monsterPrefabs[i]);
         }
 
         //determining spawn borders
@@ -35,20 +30,11 @@ public class MonstersView : MonoBehaviour {
         maxSpawnPoint = new Vector3(maxFieldPoint.x - monsterDiameter, monsterSpawnHeight, maxFieldPoint.z - monsterDiameter);
         minSpawnPoint = new Vector3(minFieldPoint.x + monsterDiameter, monsterSpawnHeight, minFieldPoint.z + monsterDiameter);
     }
-	
-	
-	void Update ()
-    {
-        if (currentMonsterCount < maxMonsterCount)
-            SpawnMonster();
-    }
 
-    void DescreaseMonsterCounter()
+    public void SetMonsterTarget(GameObject target)
     {
-        if (currentMonsterCount >=0)
-            currentMonsterCount--;
+        monsterTarget = target;
     }
-
 
     public void SpawnMonster()
     {
@@ -67,6 +53,14 @@ public class MonstersView : MonoBehaviour {
         }
         while (isMonsterPositionVisible);
         monster.transform.position = monsterPosition;
-        currentMonsterCount++;
+    }
+
+    public void DestroyAllMonsters()
+    {
+        for (int i = 0; i < monsterPrefabs.Length; i++)
+            for (int j = 0; j < monstersManager.GetMaxMonsterCount(); j++)
+            {
+                monsterPools[i].PoolObjectDirectAcccess(j).GetComponent<MonsterController>().DeathIfActive();
+            }
     }
 }

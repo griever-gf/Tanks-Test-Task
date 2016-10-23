@@ -25,4 +25,9 @@ public class GameObjectPool: MonoBehaviour {
             }
         return null;
     }
+
+    public GameObject PoolObjectDirectAcccess(int idx)
+    {
+        return gameObjects[idx];
+    }
 }

@@ -3,9 +3,8 @@ using System.Collections;
 
 public class TankMovementController : MonoBehaviour
 {
-    public float rotationSpeed = 100;
-
-    public TankManager tankManager;
+    float rotationSpeed;
+    float movementSpeed;
     public TankView tankView;
 
     public void ProcessKeyHold(KeyCode key_code)
@@ -44,14 +43,20 @@ public class TankMovementController : MonoBehaviour
         }
     }
 
+    public void SetTankParams(float mov_spd, float rot_spd)
+    {
+        movementSpeed = mov_spd;
+        rotationSpeed = rot_spd;
+    }
+
     public float GetTankMovementSpeed()
     {
-        return tankManager.GetTankMovementSpeed();
+        return movementSpeed;
     }
 
     public float GetTankRotationSpeed()
     {
-        return tankManager.GetTankRotationSpeed();
+        return rotationSpeed;
     }
 
     public Vector3 GetTankPosition()

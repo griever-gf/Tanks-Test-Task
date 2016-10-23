@@ -3,11 +3,12 @@ using System.Collections;
 
 public class TankManager : MonoBehaviour {
 
-    public TankData tankData;
-    public TankMovementController tankMovementController;
-    public WeaponController weaponController;
     public CameraController cameraController;
-
+    public TankData tankData;
+    public TankSpawner tankSpawner;
+    TankMovementController tankMovementController;
+    WeaponController weaponController;
+    
 
     public void ProcessKeyHold(KeyCode key_code)
     {
@@ -69,5 +70,22 @@ public class TankManager : MonoBehaviour {
     public void UpdateTankWeapon(int idx, bool play_sound, TankData.WeaponParameters weapon_params)
     {
         weaponController.UpdateCurrentWeapon(idx, play_sound, weapon_params);
+    }
+
+    void Awake()
+    {
+        SpawnTank();
+    }
+
+    void SpawnTank()
+    {
+        tankSpawner.SpawnTank();
+        tankData.ProcessTankStart();
+    }
+
+    public void SetTankMovementAndWeaponControllers(TankMovementController tmc, WeaponController twc)
+    {
+        tankMovementController = tmc;
+        weaponController = twc;
     }
 }

@@ -18,8 +18,7 @@ public class WeaponView : MonoBehaviour {
 
     int bulletMoveSpeed = 20;
 
-    void Start () {
-
+    void Awake () {
         weapons = new GameObject[weaponPrefabs.Length];
         bulletPools = new GameObjectPool[weaponPrefabs.Length];
         for (int i = 0; i < weaponPrefabs.Length; i++)

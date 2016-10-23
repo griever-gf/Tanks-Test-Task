@@ -82,4 +82,10 @@ public class MonsterController : MonoBehaviour {
             }
         }
     }
+
+    public void DeathIfActive()
+    {
+        if (gameObject.activeInHierarchy)
+            Death();
+    }
 }

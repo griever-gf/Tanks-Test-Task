@@ -33,9 +33,13 @@ public class TankData : MonoBehaviour {
     WeaponParameters[] weapons = new WeaponParameters[] {new WeaponParameters(600,5), new WeaponParameters(400,10), new WeaponParameters(200,30) };
     int currentWeaponIndex;
 
-    void Start()
+    void Awake()
     {
         tankParameters = new TankParameters();
+    }
+
+    public void ProcessTankStart()
+    {
         SetCurrentWeapon(0);
         MonsterController.OnMonsterTouchTankAction += DescreaseTankHealth;
         GUIView._instance.UpdateTankHealth(tankParameters.health);
