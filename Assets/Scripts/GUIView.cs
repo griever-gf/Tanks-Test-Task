@@ -38,6 +38,7 @@ public class GUIView : MonoBehaviour {
 
     public void SpawnRestartPopup()
     {
+        Debug.Log("Spawn restart popup");
         popupRestart = Instantiate(pPopupRestart);
         popupRestart.transform.SetParent(canvas.transform, false);
         popupRestart.GetComponentInChildren<Button>().onClick.AddListener(RestartButtonPressed);

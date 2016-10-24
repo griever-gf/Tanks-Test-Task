@@ -53,11 +53,11 @@ public class MonsterController : MonoBehaviour {
             isTankTouched = true;
             MonsterSound._instance.PlayDeathByTank();
             OnMonsterTouchTankAction(damage);
-            Death();
+            Death(true);
         }
     }
 
-    void Death()
+    void Death(bool increase_death_counter)
     {
         //Debug.Log("Monster Death");
         OnMonsterDeath();
@@ -65,7 +65,8 @@ public class MonsterController : MonoBehaviour {
         rigidbody.velocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
         gameObject.SetActive(false);
-        GameController._instance.IncreaseDeathCounter();
+        if (increase_death_counter)
+            GameController._instance.IncreaseDeathCounter();
     }
 
     public void ApplyDamage(int attacker_damage)
@@ -78,7 +79,7 @@ public class MonsterController : MonoBehaviour {
             if (health <= 0)
             {
                 MonsterSound._instance.PlayDeathByBullet();
-                Death();
+                Death(true);
             }
         }
     }
@@ -86,6 +87,6 @@ public class MonsterController : MonoBehaviour {
     public void DeathIfActive()
     {
         if (gameObject.activeInHierarchy)
-            Death();
+            Death(false);
     }
 }

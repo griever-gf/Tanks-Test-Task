@@ -60,6 +60,7 @@ public class TankData : MonoBehaviour {
         }
         else
         {
+            MonsterController.OnMonsterTouchTankAction -= DescreaseTankHealth;
             GUIView._instance.UpdateTankHealth(0);
             tankManager.ProcessGameOver();
         }

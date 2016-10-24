@@ -55,5 +55,7 @@ public class GameController : MonoBehaviour {
         SetGameCycleState(GameController.GameCycleState.gameplay);
         tankManager.SpawnTank();
         cameraController.ResetCameraPosition();
+        deathCounter = 0;
+        GUIView._instance.UpdateDeathCounter(deathCounter);
     }
 }
